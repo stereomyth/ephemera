@@ -1,0 +1,104 @@
+
+
+.tile {
+    height: 200px;
+    width: 300px;
+    margin: 300px auto;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    // border: 1px solid orange;
+
+    .target {
+        border: 1px solid orange;
+        position: absolute;
+
+        &.top, &.bottom {
+            height: 50px;
+        }
+
+        &.left, &.right {
+            width: 50px;
+        }
+
+        &.top {
+            top:0;
+            left:0;
+            right:0;
+        }
+        &.left {
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+        &.right {
+            top: 0;
+            bottom: 0;
+            right: 0;
+        }
+        &.bottom {
+            left:0;
+            right:0;
+            bottom: 0;
+        }
+    }
+
+    &
+    // .enter-bottom {
+    //     .front {
+    //         transform: rotateX(180deg);
+    //     }
+
+    //     .back {
+    //         transform: rotateX(0deg);
+
+    //     }
+    // }
+
+    .front, .back {
+        height: 200px;
+        width: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        font-size: 3em;
+        border: 1px solid lightgray;
+        box-sizing: border-box;
+        padding-top: 70px;
+        transition: transform 1s;
+        backface-visibility: hidden;
+        pointer-events: none;
+    }
+
+    .front {
+        background-color: white;
+        // display: none;
+    }
+
+    .back {
+        background-color: #333;
+        color: white;
+        transform: rotateX(-180deg);
+        // display: none;
+    }
+}
+
+// .tile:hover {
+// // .enter-top {
+//     .front, .back {
+
+//         animation: enterBottom 1s;
+//     }
+// }
+
+// @keyframes enterTop {
+//     from { transform: rotateX(0deg)}
+//     to { transform: rotateX(180deg)}
+// }
+
+// @keyframes enterBottom {
+//     from { transform: rotateX(0deg)}
+//     to { transform: rotateX(-180deg)}
+// }
