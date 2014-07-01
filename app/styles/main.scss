@@ -1,10 +1,15 @@
-
+.container {
+    // border: 1px solid purple;
+    // background-color: tomato;
+    margin: 200px auto;
+}
 
 .tile {
     height: 200px;
     width: 300px;
-    margin: 300px auto;
+    // margin: 300px auto;
     position: relative;
+    float: left;
     cursor: pointer;
     transform-style: preserve-3d;
     perspective: 800px;
