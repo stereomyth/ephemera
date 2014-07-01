@@ -6,19 +6,17 @@ tiles = {
 
     tileArray: [],
 
-    gridX: 2,
+    gridX: 10,
 
-    gridY: 2,
+    gridY: 10,
 
-    tileHeight: 200,
+    tileHeight: 100,
 
-    tileWidth: 300,
+    tileWidth: 100,
 
     init: function () {
 
         this.build();
-
-        // tiles.listeners();
 
     },
 
@@ -46,43 +44,6 @@ tiles = {
 
         }
 
-    },
-
-    listeners: function () {
-
-        // $('.tile').on('mouseenter', function (event) {
-
-        //     // console.log ('enter ' + $(event.toElement).data('dir'));
-
-        //     tiles.doEnter(event);
-
-        // });
-
-        // $('.target').on('mouseenter', function (event) {
-
-        //     tiles.currentTarget = $(event.target).data('dir');
-
-        // });
-
-        // $('.tile').on('mouseleave', function () {
-
-        //     console.log ('exit ' + tiles.currentTarget);
-
-        // });
-
-    },
-
-    doEnter: function (event) {
-        var front = $(event.currentTarget).children('.front');
-        var back = $(event.currentTarget).children('.back');
-
-        front.css('transform', 'rotateX(180deg)');
-        back.css('transform', 'rotateX(0deg)');
-
-        console.log(event.currentTarget);
-
-        // target.children('.front')
-
     }
 
 };
@@ -93,50 +54,98 @@ tile = {
 
     currentTarget: '',
 
+    currentX: 0,
+
+    currentY: 0,
+
     init: function (container) {
 
-        this.domObject = $('<div>', { class: 'tile'});
+        this.domObject = $('<div>', { class: 'tile'}).css({height: tiles.tileHeight + 'px', width: tiles.tileWidth + 'px'});
 
         this.domObject
             .append( $('<div>', { class: 'top target', 'data-dir': 'top' }) )
             .append( $('<div>', { class: 'right target', 'data-dir': 'right' }) )
             .append( $('<div>', { class: 'bottom target', 'data-dir': 'bottom' }) )
             .append( $('<div>', { class: 'left target', 'data-dir': 'left' }) )
-            .append( $('<div>', { class: 'front' }) )
-            .append( $('<div>', { class: 'back' }) );
+            .append( $('<div>', { class: 'front' }).css({height: tiles.tileHeight + 'px', width: tiles.tileWidth + 'px'}) )
+            .append( $('<div>', { class: 'back' }).css({height: tiles.tileHeight + 'px', width: tiles.tileWidth + 'px'}) );
 
         container.append(this.domObject);
 
-        this.domObject.css('background', 'tomato');
+        // this.domObject.css('background', 'tomato');
 
         this.listeners();
+         console.log(this.currentY + ', ' + -this.currentY);
 
     },
-
-    // build: function () {
-
-    //     $()
-
-    // },
 
     listeners: function () {
         var self = this;
 
-        this.domObject.on('mouseenter', function (event) {
+        this.domObject
 
-            console.log ('enter ' + $(event.toElement).data('dir'));
+            .on('mouseenter', function (event) {
 
-            // tiles.doEnter(event);
+                // console.log ('enter ' + $(event.toElement).data('dir'));
 
-        }).on('mouseleave', function () {
+                self.doEnter($(event.toElement).data('dir'));
 
-            console.log ('exit ' + self.currentTarget);
+            })
 
-        }).children('.target').on('mouseenter', function (event) {
+            .on('mouseleave', function () {
 
-            self.currentTarget = $(event.target).data('dir');
+                // console.log ('exit ' + self.currentTarget);
 
-        });
+                setTimeout(function(){
+
+                    self.doEnter(self.currentTarget);
+
+                },1000)
+
+
+            })
+
+            .children('.target').on('mouseenter', function (event) {
+
+                self.currentTarget = $(event.target).data('dir');
+
+            });
+
+    },
+
+    doEnter: function (direction) {
+        var front = this.domObject.children('.front');
+        var back = this.domObject.children('.back');
+        // var direction = $(event.toElement).data('dir');
+        var difX = 0, difY = 0;
+
+        // var theNum = cheese ? 180 : -180;
+        var theNum = 180;
+
+        switch (direction) {
+            case 'top':
+                difX = theNum;
+            break;
+
+            case 'bottom':
+                difX = -theNum;
+            break;
+
+            case 'right':
+                difY = -theNum;
+            break;
+
+            case 'left':
+                difY = theNum;
+            break;
+        }
+
+        this.currentX += difX;
+        this.currentY += difY;
+        console.log(this.currentY);
+
+        front.css('transform', 'rotateX(' + this.currentX + 'deg) rotateY(' + (this.currentY * -1) + 'deg)');
+        back.css('transform', 'rotateX(' + (this.currentX + 180) + 'deg) rotateY(' + this.currentY + 'deg)');
 
     }
 
