@@ -101,9 +101,9 @@ tile = {
 
                 // console.log ('enter ' + $(event.toElement).data('dir'));
 
-                // self.doEnter($(event.toElement).data('dir'));
+                self.doEnter($(event.toElement).data('dir'));
 
-                self.domObject.css('background', 'red');
+                // self.domObject.css('background', 'red');
 
                 self.flipped = true;
 
@@ -117,8 +117,8 @@ tile = {
 
                     setTimeout(function(){
 
-                        // self.doEnter(self.currentTarget);
-                        self.domObject.css('background', '#222');
+                        self.doEnter(self.currentTarget);
+                        // self.domObject.css('background', '#222');
 
                     },1000);
 
@@ -175,6 +175,10 @@ tile = {
 
 $(function() {
 
-    tiles.init();
+    if ($('body').hasClass('tiles')) {
+
+        tiles.init();
+
+    }
 
 });
