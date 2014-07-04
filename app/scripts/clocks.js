@@ -2,9 +2,17 @@
 
 var clocks, clock;
 
-function timeToDeg (time) {
+function sixtyToDeg (time) {
 
     return 360 * (time / 60);
+
+}
+
+function twentyfourToDeg (time) {
+
+    time = time > 12 ? time -= 12 : time ;
+
+    return 360 * (time / 12);
 
 }
 
@@ -41,8 +49,6 @@ clocks = {
     update: function () {
         var i, time = new Date();
 
-        // console.log(d.getSeconds());
-
         for (i = 0; i < this.clocksArray.length; i++) {
 
             this.clocksArray[i].update(time);
@@ -67,16 +73,15 @@ clock = {
     update: function (time) {
         var s, m, h;
 
-        // console.log(time);
-
         s = time.getSeconds();
         m = time.getMinutes();
         h = time.getHours();
 
-        console.log(this.domObject);
+        console.log(h);
 
-        this.domObject.children('.s-hand').css('transform','rotate(' + timeToDeg(s) + 'deg)');
-        this.domObject.children('.m-hand').css('transform','rotate(' + timeToDeg(m) + 'deg)');
+        this.domObject.children('.s-hand').css('transform','rotate(' + sixtyToDeg(s) + 'deg)').text(s);
+        this.domObject.children('.m-hand').css('transform','rotate(' + sixtyToDeg(m) + 'deg)').text(m);
+        this.domObject.children('.h-hand').css('transform','rotate(' + twentyfourToDeg(h) + 'deg)').text(h);
 
 
     }
