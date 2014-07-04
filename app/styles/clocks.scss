@@ -1,0 +1,49 @@
+.clocks {
+
+    background-color: #333;
+
+    .clock {
+        width: 300px;
+        height: 300px;
+        border: 5px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .h-hand, .m-hand, .s-hand {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        font-size: 2em;
+        color: white;
+        box-sizing: border-box;
+        transition: transform 0.3s;
+    }
+
+    .classic {
+
+        // &:hover .h-hand {
+        //     transform: rotate(720deg);
+
+        // }
+
+        .h-hand {
+            padding-top: 60px;
+            // transform: rotate(0deg);
+
+
+        }
+        .m-hand {
+            padding-top: 30px;
+        }
+        .s-hand {
+
+        }
+    }
+
+}
