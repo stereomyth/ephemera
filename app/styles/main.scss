@@ -1,2 +1,14 @@
+@mixin at-least($device-width) {
+    @media screen and (min-width: $device-width) {
+        @content
+    }
+}
+
+@mixin at-most($device-width) {
+    @media screen and (max-width: $device-width) {
+        @content
+    }
+}
+
 @import "tiles";
 @import "clocks";
