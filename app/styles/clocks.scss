@@ -67,19 +67,39 @@
         font-size: 2em;
         color: white;
         box-sizing: border-box;
-        transition: transform 0.3s;
+        // transition: transform 0.3s;
     }
 
-    .classic {
+    .spoke {
+        width: 1px;
+        height: 50%;
+        background-color: white;
+        margin: auto;
+        // margin-top: -1%;
+    }
 
-        .h-hand {
-            padding-top: 60px;
+    .h-hand {
+        // padding-top: 60px;
+        .spoke {
+            width: 2%;
+            height: 30%;
+            margin-top: 21%;
         }
-        .m-hand {
-            padding-top: 30px;
+    }
+    .m-hand {
+        // padding-top: 30px;
+        .spoke {
+            width: 1%;
+            height: 40%;
+            margin-top: 11%;
+            background-color: rgba(255,255,255,0.8);
         }
-        .s-hand {
-
+    }
+    .s-hand {
+        .spoke {
+            width: 0.7%;
+            height: 50%;
+            background-color: rgba(255,255,255,0.5);
         }
     }
 

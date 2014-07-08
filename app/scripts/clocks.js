@@ -4,7 +4,7 @@ var clocks, clock;
 
 function sixtyToDeg (time) {
 
-    return 360 * (time / 60);
+    return 6 * time;
 
 }
 
@@ -64,6 +64,8 @@ clock = {
 
     domObject: '',
 
+    seconds: true,
+
     init: function (domObject) {
 
         this.domObject = domObject;
@@ -73,16 +75,20 @@ clock = {
     update: function (time) {
         var s, m, h;
 
-        s = time.getSeconds();
+        if (this.seconds) {
+
+            s = time.getSeconds();
+            this.domObject.children('.s-hand').css('transform','rotate(' + sixtyToDeg(s) + 'deg)');
+
+            console.log(sixtyToDeg(s));
+
+        }
+
         m = time.getMinutes();
+        this.domObject.children('.m-hand').css('transform','rotate(' + sixtyToDeg(m) + 'deg)');
+
         h = time.getHours();
-
-        console.log(h);
-
-        this.domObject.children('.s-hand').css('transform','rotate(' + sixtyToDeg(s) + 'deg)').text(s);
-        this.domObject.children('.m-hand').css('transform','rotate(' + sixtyToDeg(m) + 'deg)').text(m);
-        this.domObject.children('.h-hand').css('transform','rotate(' + twentyfourToDeg(h) + 'deg)').text(h);
-
+        this.domObject.children('.h-hand').css('transform','rotate(' + twentyfourToDeg(h) + 'deg)');
 
     }
 
