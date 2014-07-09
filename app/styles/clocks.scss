@@ -35,15 +35,15 @@
             height: 50vw;
         }
 
-        @include at-least(800px) {
-            width: 33.3vw;
-            height: 33.3vw;
+        @include at-least(1000px) {
+            width: 33.33333vw;
+            height: 33.33333vw;
         }
 
-        @include at-least(1200px) {
-            width: 25vw;
-            height: 25vw;
-        }
+        // @include at-least(1200px) {
+        //     width: 25vw;
+        //     height: 25vw;
+        // }
     }
 
     .clock {
