@@ -27,6 +27,9 @@
         // max-height: 400px;
         box-sizing: border-box;
         float:left;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
         // box-shadow: inset 0px 0px 3vw rgba(0,0,0,0.4);
         // max-width: 400px;
 
@@ -44,6 +47,19 @@
         //     width: 25vw;
         //     height: 25vw;
         // }
+
+        &:after {
+            background-color: rgba(0,0,0,0.2);
+            content: 'x';
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            height: 80%;
+            width: 200%;
+            z-index: 5;
+            transform: rotate(45deg);
+            transform-origin: left center;
+        }
     }
 
     .clock {
@@ -55,6 +71,8 @@
         position: relative;
         overflow: hidden;
         box-sizing: border-box;
+        z-index: 10;
+
     }
 
     .h-hand, .m-hand, .s-hand {
@@ -107,12 +125,21 @@
 
     .lime {
         background-color: #2ECC71;
+        .clock {
+            background-color: #2ECC71;
+        }
     }
     .tomato {
         background-color: #E74C3C;
+        .clock {
+            background-color: #E74C3C;
+        }
     }
     .purple {
         background-color: #F1C40F;
+        .clock {
+            background-color: #F1C40F;
+        }
     }
 
 
