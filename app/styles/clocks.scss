@@ -1,6 +1,6 @@
 .clocks {
 
-    background-color: #2C3E50;
+    background-color: #333;
 
     .title {
         text-align: center;
@@ -85,7 +85,8 @@
         font-size: 2em;
         color: white;
         box-sizing: border-box;
-        // transition: transform 0.3s;
+        // transition: transform 0.1s ease;
+        // transition: transform 0.1s ease-in;
     }
 
     .spoke {
