@@ -2,20 +2,6 @@
 
 var clocks, clock;
 
-function sixtyToDeg (time) {
-
-    return 6 * time;
-
-}
-
-function twentyfourToDeg (time) {
-
-    time = time > 12 ? time -= 12 : time ;
-
-    return 360 * (time / 12);
-
-}
-
 clocks = {
 
     clocksArray: [],
@@ -28,7 +14,6 @@ clocks = {
             newClock = $.extend({}, clock);
 
             newClock.init($(this));
-
             self.clocksArray.push(newClock);
 
         });
@@ -43,7 +28,6 @@ clocks = {
 
         }, 100);
 
-
     },
 
     update: function () {
@@ -54,7 +38,6 @@ clocks = {
             this.clocksArray[i].update(time);
 
         }
-
 
     }
 
@@ -85,21 +68,64 @@ clock = {
     update: function (time) {
         var s, m, h;
 
+        h = time.getHours();
+        m = time.getMinutes();
+        s = time.getSeconds();
+
+        this.domObject.children('.h-hand').css('transform','rotate(' + this.handleHour(h, m) + 'deg)');
+
+        this.domObject.children('.m-hand').css('transform','rotate(' + this.handleMinutes(m, h) + 'deg)');
+
         if (this.seconds) {
 
-            s = time.getSeconds();
-            this.domObject.children('.s-hand').css('transform','rotate(' + sixtyToDeg(s) + 'deg)');
-
-            console.log(sixtyToDeg(s));
+            this.domObject.children('.s-hand').css('transform','rotate(' + this.handleSeconds(s, m, h) + 'deg)');
 
         }
 
-        m = time.getMinutes();
-        this.domObject.children('.m-hand').css('transform','rotate(' + sixtyToDeg(m) + 'deg)');
+    },
 
-        h = time.getHours();
-        this.domObject.children('.h-hand').css('transform','rotate(' + twentyfourToDeg(h) + 'deg)');
+    handleHour: function (h, m) {
+        var degrees, degInHour;
 
+        degInHour = this.twentyfour ? 15 : 30 ;
+
+        degrees = this.handle24(h) * degInHour;
+
+        if (this.smooth) {
+
+            degrees += degInHour / 60 * m;
+
+        }
+
+        return degrees;
+
+    },
+
+    handleMinutes: function (m, h) {
+
+        return (6 * m) + (360 * h);
+
+    },
+
+    handleSeconds: function (s, m, h) {
+
+        return (6 * s) + (360 * m) + (360 * 60 * h);
+
+    },
+
+    handle24: function (time) {
+
+        if (!this.twentyfour) {
+
+            if (time > 12) {
+
+                time -= 12;
+
+            }
+
+        }
+
+        return time;
     }
 
 };
