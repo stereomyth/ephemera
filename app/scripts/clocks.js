@@ -64,11 +64,21 @@ clock = {
 
     domObject: '',
 
-    seconds: true,
+    seconds: false,
+
+    twentyfour: false,
+
+    smooth: false,
 
     init: function (domObject) {
 
         this.domObject = domObject;
+
+        this.seconds = domObject.has('.s-hand');
+
+        this.twentyfour = domObject.data('twentyfour');
+
+        this.smooth = domObject.data('smooth');
 
     },
 
