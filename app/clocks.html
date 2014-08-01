@@ -2,7 +2,7 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>Ephemera</title>
+        <title>Clocks</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, minimum-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -21,14 +21,43 @@
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
     </head>
-    <body class="index">
+    <body class="clocks">
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <a href="clocks.html">Clocks</a>
-        <a href="tiles.html">Tiles</a>
-        <a href="twitter.html">Twitter</a>
+        <header class="title">
+            <h1>Collected Momevents</h1>
+            <p> &hellip;each stroke a measure of inevitability; the seconds fall as leaves in autumn.</p>
+        </header>
+
+        <div class="clock-box lime">
+            <div class="clock classic" data-smooth="true" data-twentyfour="false">
+                <div class="h-hand"><div class="spoke"></div></div>
+                <div class="m-hand"><div class="spoke"></div></div>
+                <div class="s-hand"><div class="spoke"></div></div>
+            </div>
+        </div>
+
+        <div class="clock-box tomato">
+            <div class="clock classic">
+               <div class="h-hand"><img src="images/dot-h.svg" alt=""></div>
+               <div class="m-hand"><img src="images/dot-m.svg" alt=""></div>
+               <div class="s-hand"><img src="images/dot-s.svg" alt=""></div>
+           </div>
+        </div>
+
+        <div class="clock-box purple">
+            <div class="clock classic" data-twentyfour="true">
+               <div class="h-hand"><div class="spoke"></div></div>
+               <div class="m-hand"><div class="spoke"></div></div>
+               <div class="s-hand"><div class="spoke"></div></div>
+           </div>
+        </div>
+
+        <footer>
+           <p>lost with me</p>
+        </footer>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -49,7 +78,6 @@
         <!-- build:js scripts/main.js -->
         <script src="scripts/tiles.js"></script>
         <script src="scripts/clocks.js"></script>
-        <script src="scripts/twitter.js"></script>
         <!-- endbuild -->
     </body>
 </html>
