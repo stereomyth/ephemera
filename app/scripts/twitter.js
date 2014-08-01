@@ -21,6 +21,10 @@ twitter = {
 
 $(function() {
 
-    twitter.init();
+    if ( $('body').hasClass('twitter') ) {
+
+        twitter.init();
+
+    }
 
 });
