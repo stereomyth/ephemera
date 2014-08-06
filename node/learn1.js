@@ -2,9 +2,9 @@
 
 var fs = require('fs');
 
-var fileBuffer = fs.readFileSync(process.argv[2]);
+// var fileBuffer = fs.readFileSync(process.argv[2]);
 
-console.log('')
+console.log(process.argv);
 
 // var total = 0;
 
