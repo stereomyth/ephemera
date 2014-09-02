@@ -1,12 +1,12 @@
 @mixin at-least($device-width) {
     @media screen and (min-width: $device-width) {
-        @content
+        @content;
     }
 }
 
 @mixin at-most($device-width) {
     @media screen and (max-width: $device-width) {
-        @content
+        @content;
     }
 }
 
@@ -30,7 +30,10 @@ body {
 
     a {
         padding: 14px 28px;
-        margin: 0 12px;
+
+        height: 200px;
+        width: 300px;
+        margin: 12px;
         border: 2px solid white;
         color: white;
         display: inline-block;
@@ -38,10 +41,22 @@ body {
         transition: background-color 0.3s ease, color 0.3s ease;
         text-transform: uppercase;
         letter-spacing: 1px;
+        position: relative;
+
+        span {
+            position: absolute;
+            bottom: 5%;
+            right: 4%;
+            transition: bottom 0.2s ease-out;
+        }
 
         &:hover {
             background-color: white;
             color: tomato;
+
+            span {
+                bottom: 45%;
+            }
         }
     }
 }
