@@ -1,5 +1,81 @@
+$disc-count: 5;
+$percent: 100 / $disc-count;
+$box-dim: 500px;
+$incriment: $box-dim / $disc-count;
+$bgc: #1e1e1e;
+
 .concentric {
 
-    background-color: #1e1e1e;
+    background-color: $bgc;
+
+    .contain {
+        // background-color: tomato;
+
+        width: $box-dim;
+        height: $box-dim;
+        margin: auto;
+        margin-top: 50px;
+        position: relative;
+
+        &:hover {
+            .disc {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    .disc {
+        border-radius: 50%;
+        // background-color: white;
+        background-color: $bgc;
+        // border: 1px dashed black;
+        position: absolute;
+        overflow: hidden;
+        transition: transform 0.5s;
+        height: 100px;
+        width: 100px;
+
+        .word {
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            // margin: auto;
+            text-align: center;
+            width: $box-dim;
+            height: $box-dim;
+            // border: 1px solid black;
+
+            h1 {
+                // display: none;
+                font-size: 100px;
+                line-height: $box-dim;
+                margin: 0;
+                color: white;
+            }
+        }
+    }
+
+    @mixin disc-mix ($disc-num) {
+        $local-percent: $incriment * $disc-num;
+        height: $local-percent;
+        width: $local-percent + 1px;
+
+        $local-margin: ($box-dim - $local-percent) / 2;
+        left: $local-margin;
+        top: $local-margin;
+
+        transition-delay: 0.2s * $disc-num;
+
+        .word {
+            top: ($box-dim / 2) - $local-margin - ($box-dim / 2);
+            left: ($box-dim / 2) - $local-margin - ($box-dim / 2);
+        }
+    }
+
+    .disc1 { @include disc-mix(1); };
+    .disc2 { @include disc-mix(2); };
+    .disc3 { @include disc-mix(3); };
+    .disc4 { @include disc-mix(4); };
+    .disc5 { @include disc-mix(5); };
 
 }

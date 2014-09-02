@@ -2,6 +2,6 @@
 
 $(function() {
 
-    console.log('concentric!')
+    console.log('concentric!');
 
 });
