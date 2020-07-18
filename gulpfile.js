@@ -5,13 +5,11 @@ var gulp = require('gulp');
 
 // load plugins
 var $ = require('gulp-load-plugins')();
+$.sass.compiler = require('node-sass');
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.scss')
-        .pipe($.rubySass({
-            style: 'expanded',
-            precision: 10
-        }))
+        .pipe($.sass().on('error', $.sass.logError))
         .pipe($.autoprefixer('last 1 version'))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
